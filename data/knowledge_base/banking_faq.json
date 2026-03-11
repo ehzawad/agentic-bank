@@ -1,0 +1,152 @@
+[
+  {
+    "id": "faq_cc_eligibility",
+    "question": "What are the eligibility requirements for a credit card?",
+    "answer": "You need to be at least 21 years old, earn a minimum annual income of $30,000, and have good credit standing with at least 6 months of banking history.",
+    "category": "credit_cards"
+  },
+  {
+    "id": "faq_cc_travel_options",
+    "question": "What travel rewards credit cards are available?",
+    "answer": "Citi PremierMiles: 2 miles/dollar, no foreign transaction fee, airport lounge access, $95 annual fee. Citi Prestige: 3 miles/dollar on travel, Priority Pass, 4th night free hotel, $495 annual fee.",
+    "category": "credit_cards"
+  },
+  {
+    "id": "faq_cc_required_docs",
+    "question": "What documents are needed to apply for a credit card?",
+    "answer": "Government-issued photo ID (passport or driver's license), proof of income (last 2 pay stubs or tax return), proof of address (utility bill or bank statement within 60 days), and Social Security Number.",
+    "category": "credit_cards"
+  },
+  {
+    "id": "faq_cc_delivery_time",
+    "question": "How long does credit card delivery take after approval?",
+    "answer": "7 to 10 business days after approval for standard delivery. Expedited delivery is 2-3 business days.",
+    "category": "credit_cards"
+  },
+  {
+    "id": "faq_cc_selfemployed_income",
+    "question": "What income proof do self-employed applicants need for a credit card?",
+    "answer": "Self-employed applicants can provide 2 years of tax returns, profit and loss statement, or business bank statements showing 12 months of regular deposits.",
+    "category": "credit_cards"
+  },
+  {
+    "id": "faq_cc_replacement_pin",
+    "question": "Will my PIN be the same on a replacement card?",
+    "answer": "Replacement cards are issued with a new PIN, mailed separately for security. You can set your own PIN via the mobile app or at any ATM on first use.",
+    "category": "credit_cards"
+  },
+  {
+    "id": "faq_cc_replacement_delivery",
+    "question": "How long does a replacement card take to arrive?",
+    "answer": "Standard replacement: 5-7 business days. Expedited replacement: 2-3 business days. A temporary virtual card is activated immediately for online and contactless payments.",
+    "category": "credit_cards"
+  },
+  {
+    "id": "faq_cc_update_subscriptions",
+    "question": "Do I need to update my card on file for subscriptions after getting a replacement?",
+    "answer": "Yes, you'll need to update recurring charges. Some merchants may automatically update through the card network, but it's best not to rely on that. You can use the virtual card number to update urgent subscriptions right away.",
+    "category": "credit_cards"
+  },
+  {
+    "id": "faq_loan_personal_rates",
+    "question": "What are the personal loan rates and terms?",
+    "answer": "Personal loans range from $5,000 to $50,000 with terms of 12 to 60 months. APR starts at 6.99% and goes up to 12.99% depending on credit profile. No collateral required and no prepayment penalty.",
+    "category": "loans"
+  },
+  {
+    "id": "faq_loan_personal_docs",
+    "question": "What documents are needed for a personal loan application?",
+    "answer": "Government-issued photo ID, proof of income (last 2 pay stubs or recent tax return), proof of address (utility bill or bank statement within 90 days). For home improvement loans, a contractor estimate or quote is also needed.",
+    "category": "loans"
+  },
+  {
+    "id": "faq_loan_selfemployed",
+    "question": "Can self-employed people get a personal loan? What do they need?",
+    "answer": "Self-employment is not typically an issue. You'll need your last 2 years of tax returns or a profit and loss statement, along with 12 months of business bank statements showing regular income.",
+    "category": "loans"
+  },
+  {
+    "id": "faq_mortgage_fixed_vs_arm",
+    "question": "What is the difference between a 30-year fixed mortgage and an ARM?",
+    "answer": "30-year fixed: rate locked for full term, predictable payments. 7/1 ARM: fixed for first 7 years, then adjusts annually based on market index + margin. Caps typically 2% per adjustment, 5% lifetime. ARM is better if planning to sell or refinance within 7 years.",
+    "category": "mortgage"
+  },
+  {
+    "id": "faq_transfer_international_fees",
+    "question": "What are the fees for international wire transfers?",
+    "answer": "Wire transfer fee is $35 per transfer. Currency conversion fee is $12.50. Exchange rates fluctuate and are locked for 15 minutes at the time of transaction.",
+    "category": "transfers"
+  },
+  {
+    "id": "faq_transfer_recurring",
+    "question": "Can I set up recurring international wire transfers?",
+    "answer": "Recurring international transfers are available. Each monthly transfer uses the exchange rate at the time of execution, not the original rate. The $35 wire fee applies each time.",
+    "category": "transfers"
+  },
+  {
+    "id": "faq_transfer_processing_time",
+    "question": "How long does an international wire transfer take?",
+    "answer": "International wire transfers typically take 1-2 business days to arrive. Processing time may vary depending on the receiving bank and country.",
+    "category": "transfers"
+  },
+  {
+    "id": "faq_statement_format",
+    "question": "What format are official bank statements in? Do they have letterhead?",
+    "answer": "Official statements include full bank letterhead, account holder name, masked account number, all transactions with running balances, the bank's official stamp, and branch address. Most embassies and institutions accept this format. For notarized copies, visit any branch.",
+    "category": "documents"
+  },
+  {
+    "id": "faq_statement_notarized",
+    "question": "How do I get a notarized bank statement?",
+    "answer": "Visit any branch to get a statement stamped and signed. This is usually done within 15 minutes. Most embassies accept our standard stamped digital statements.",
+    "category": "documents"
+  },
+  {
+    "id": "faq_tax_1099",
+    "question": "What tax documents does the bank provide?",
+    "answer": "We provide 1099-INT forms for interest earned on accounts, 1099-DIV for dividend income, and 1098 forms for mortgage interest paid. These are available by late January each year in your online banking under Tax Documents.",
+    "category": "documents"
+  },
+  {
+    "id": "faq_dispute_process",
+    "question": "How does the transaction dispute process work?",
+    "answer": "File a dispute and receive a provisional credit within 1-2 business days while we investigate. Investigation typically takes 10 business days. You'll receive the outcome via email and in your online banking.",
+    "category": "disputes"
+  },
+  {
+    "id": "faq_card_block_fraud",
+    "question": "What should I do if I suspect fraud on my card?",
+    "answer": "Call us immediately to block your card. We'll check recent activity, block the card to prevent further charges, and file a dispute for unauthorized transactions. A replacement card can be ordered with expedited delivery.",
+    "category": "security"
+  },
+  {
+    "id": "faq_card_lost_stolen",
+    "question": "What should I do if my card is lost or stolen?",
+    "answer": "Call us to immediately block your card. We can verify your identity with your phone number and date of birth if you don't have your card. We'll order a replacement with expedited delivery and activate a virtual card for immediate use.",
+    "category": "security"
+  },
+  {
+    "id": "faq_balance_check",
+    "question": "How can I check my account balance?",
+    "answer": "You can check your balance through online banking, mobile app, ATM, by calling customer service, or by visiting a branch. Real-time balances are available 24/7 through digital channels.",
+    "category": "accounts"
+  },
+  {
+    "id": "faq_account_types",
+    "question": "What types of bank accounts are available?",
+    "answer": "We offer checking accounts (standard and premium), savings accounts, money market accounts, and certificates of deposit (CDs). Each has different features for minimum balance, interest rates, and fee structures.",
+    "category": "accounts"
+  },
+  {
+    "id": "faq_premier_benefits",
+    "question": "What are the benefits of Premier/Citigold status?",
+    "answer": "Premier and Citigold customers enjoy dedicated relationship managers, priority customer service, preferential rates on loans and deposits, fee waivers, and exclusive product offers.",
+    "category": "accounts"
+  },
+  {
+    "id": "faq_cc_approval_minimum_balance",
+    "question": "What minimum balance is needed for credit card approval?",
+    "answer": "There is no specific minimum balance requirement. Approval depends on income, credit history, employment status, and overall financial profile. A healthy account balance can support your application but is not the sole criterion.",
+    "category": "credit_cards"
+  }
+]
