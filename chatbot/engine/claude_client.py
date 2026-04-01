@@ -82,7 +82,6 @@ class ClaudeClient:
                 elif block.type == "tool_use":
                     tool_use_blocks.append(block)
 
-            # If no tool calls, we're done
             if response.stop_reason != "tool_use" or not tool_use_blocks:
                 return "\n".join(text_parts), current_messages, tool_calls_made
 
@@ -108,15 +107,11 @@ class ClaudeClient:
                     "result": parsed_result,
                 })
 
-                # Write to fact store if available
                 if fact_store is not None:
-                    try:
-                        result_data = json.loads(result_str)
-                    except (json.JSONDecodeError, TypeError):
-                        result_data = {"raw": result_str}
+                    fact_data = parsed_result if isinstance(parsed_result, dict) else {"raw": result_str}
                     fact_store.write(
                         key=f"{tool_block.name}_{tool_block.id[:6]}",
-                        value=result_data,
+                        value=fact_data,
                         source_tool=tool_block.name,
                         turn_number=turn_number,
                     )

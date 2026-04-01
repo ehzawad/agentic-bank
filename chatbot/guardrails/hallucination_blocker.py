@@ -10,16 +10,16 @@ from dataclasses import dataclass, field
 
 from chatbot.memory.models import Fact
 
-FINANCIAL_PATTERNS = [
-    r"\$[\d,]+\.?\d*",                       # Dollar amounts like $12,450.75
-    r"[\d,]+\.\d{2}\s*(?:USD|EUR|GBP|BDT)",  # Currency amounts
-    r"\d+\.?\d*\s*%\s*(?:APR|interest|rate)", # Interest rates
-    r"[A-Z]{2,4}-\d{4}-\d+",                 # Reference IDs (DSP-2026-08847)
-    r"BLK-\w+-\d+",                           # Block IDs
-    r"WIR-\d{4}-\d+",                         # Wire transfer IDs
-    r"APP-\d{4}-\d+",                         # Application IDs
-    r"STM-\w+-\d+M",                          # Statement IDs
-    r"FML-\d{4}-\d+",                         # Formal complaint IDs
+_FINANCIAL_PATTERNS = [
+    re.compile(r"\$[\d,]+\.?\d*"),                       # Dollar amounts like $12,450.75
+    re.compile(r"[\d,]+\.\d{2}\s*(?:USD|EUR|GBP|BDT)"),  # Currency amounts
+    re.compile(r"\d+\.?\d*\s*%\s*(?:APR|interest|rate)"), # Interest rates
+    re.compile(r"[A-Z]{2,4}-\d{4}-\d+"),                 # Reference IDs (DSP-2026-08847)
+    re.compile(r"BLK-\w+-\d+"),                           # Block IDs
+    re.compile(r"WIR-\d{4}-\d+"),                         # Wire transfer IDs
+    re.compile(r"APP-\d{4}-\d+"),                         # Application IDs
+    re.compile(r"STM-\w+-\d+M"),                          # Statement IDs
+    re.compile(r"FML-\d{4}-\d+"),                         # Formal complaint IDs
 ]
 
 
@@ -32,9 +32,8 @@ class ScanResult:
 class HallucinationBlocker:
     def scan(self, response_text: str, fact_entries: list[Fact]) -> ScanResult:
         found: list[str] = []
-        for pattern in FINANCIAL_PATTERNS:
-            matches = re.findall(pattern, response_text)
-            found.extend(matches)
+        for pattern in _FINANCIAL_PATTERNS:
+            found.extend(pattern.findall(response_text))
 
         if not found:
             return ScanResult(safe=True)
@@ -65,6 +64,9 @@ def _extract_values(value: object) -> set[str]:
     return strings
 
 
+_NUM_RE = re.compile(r"([\d.]+)")
+
+
 def _is_grounded(claim: str, fact_values: set[str]) -> bool:
     """Check if a claimed value appears in the fact store values.
 
@@ -72,8 +74,7 @@ def _is_grounded(claim: str, fact_values: set[str]) -> bool:
     (e.g., "$100" should NOT match a fact value of "$1000").
     """
     clean = claim.strip().replace("$", "").replace(",", "").replace("%", "").strip()
-    # Extract just the numeric part from claims like "19.99 APR"
-    num_match = re.match(r"([\d.]+)", clean)
+    num_match = _NUM_RE.match(clean)
     clean_num = num_match.group(1) if num_match else clean
 
     # Try exact match on raw claim first

@@ -255,8 +255,7 @@ class ConversationEngine:
         result = await self.auth_service.verify(identifier)
 
         if result.get("verified"):
-            # Write session data
-            self.session_store.write({
+            session_data = {
                 "customer_name": result.get("name"),
                 "customer_id": result.get("customer_id"),
                 "accounts": result.get("accounts", []),
@@ -264,11 +263,11 @@ class ConversationEngine:
                 "segment": result.get("segment"),
                 "tenure": result.get("tenure"),
                 "verified": True,
-            })
-            # Write extra fields
+            }
             for key in ("credit_score_band", "vip_flag", "existing_mortgage"):
                 if key in result:
-                    self.session_store.write({key: result[key]})
+                    session_data[key] = result[key]
+            self.session_store.write(session_data)
 
             self.state_machine.transition("verified")
             name = result.get("name", "")
@@ -316,8 +315,7 @@ class ConversationEngine:
         Preserves the user turn counter (which tracks actual user turns)
         separately from the message-level counter used by the turn store.
         """
-        self.turn_store._turns.clear()
-        self.turn_store._turn_counter = 0
+        self.turn_store.clear()
         for msg in updated_messages:
             self.turn_store.append(msg["role"], msg["content"])
 
@@ -331,17 +329,17 @@ class ConversationEngine:
 
             existing = self.thread_store.get_by_topic(topic)
             if existing is None:
-                # Suspend other active threads if topic changed
-                for active in self.thread_store.get_active():
-                    if active.topic != topic:
-                        self.thread_store.suspend(active.thread_id)
+                self._switch_to_topic(topic)
                 self.thread_store.create(topic=topic)
             elif existing.status.value == "suspended":
-                # Resume a previously suspended thread
-                for active in self.thread_store.get_active():
-                    if active.topic != topic:
-                        self.thread_store.suspend(active.thread_id)
+                self._switch_to_topic(topic)
                 self.thread_store.resume(existing.thread_id)
+
+    def _switch_to_topic(self, topic: str) -> None:
+        """Suspend active threads that don't match the given topic."""
+        for active in self.thread_store.get_active():
+            if active.topic != topic:
+                self.thread_store.suspend(active.thread_id)
 
     def _get_active_workflow_instruction(self) -> str | None:
         """Get instruction for any active workflow thread."""

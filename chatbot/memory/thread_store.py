@@ -50,12 +50,11 @@ class ThreadStore:
                 return
 
     def to_context(self) -> str:
-        active = self.get_active()
-        suspended = self.get_suspended()
-        if not active and not suspended:
+        threads = self.get_active() + self.get_suspended()
+        if not threads:
             return ""
         lines = []
-        for t in active:
+        for t in threads:
             line = f"- [{t.status.value}] {t.topic}"
             if t.workflow_id:
                 line += f" (workflow step {t.workflow_step})"
@@ -64,10 +63,5 @@ class ThreadStore:
             if t.slots_filled:
                 filled = ", ".join(f"{k}={v}" for k, v in t.slots_filled.items())
                 line += f" — have: {filled}"
-            lines.append(line)
-        for t in suspended:
-            line = f"- [{t.status.value}] {t.topic}"
-            if t.slots_needed:
-                line += f" — need: {', '.join(t.slots_needed)}"
             lines.append(line)
         return "\n".join(lines)

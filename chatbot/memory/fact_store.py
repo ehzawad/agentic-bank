@@ -13,7 +13,6 @@ class FactStore:
         self._facts: list[Fact] = []
 
     def write(self, key: str, value: object, source_tool: str, turn_number: int) -> Fact:
-        # Check if key already exists — supersede old entry
         for f in self._facts:
             if f.key == key and f.superseded_by is None:
                 new_fact = Fact(

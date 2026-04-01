@@ -33,5 +33,9 @@ class TurnStore:
             messages.append({"role": turn.role, "content": turn.content})
         return messages
 
+    def clear(self) -> None:
+        self._turns.clear()
+        self._turn_counter = 0
+
     def get_recent(self, n: int = 10) -> list[Turn]:
         return self._turns[-n:]

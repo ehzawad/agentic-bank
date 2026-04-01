@@ -31,7 +31,6 @@ class EmotionEscalation:
 
         recent = readings[-n:]
 
-        # Check: rising or sustained high trajectory
         is_rising = all(
             recent[i].score <= recent[i + 1].score for i in range(len(recent) - 1)
         )

@@ -18,6 +18,8 @@ _URGENCY_PHRASES = [
     "third time", "called before", "nobody", "no one",
 ]
 
+_WORD_RE = re.compile(r"[a-z]+")
+
 
 def _score_text(text: str) -> tuple[float, str, list[str]]:
     """Heuristic emotion scoring. Returns (score, label, indicators)."""
@@ -41,7 +43,7 @@ def _score_text(text: str) -> tuple[float, str, list[str]]:
         score += 0.1
 
     # Negative lexicon
-    words = set(re.findall(r"[a-z]+", text.lower()))
+    words = set(_WORD_RE.findall(text.lower()))
     neg_hits = words & _NEGATIVE_WORDS
     if neg_hits:
         score += min(0.3, len(neg_hits) * 0.1)
